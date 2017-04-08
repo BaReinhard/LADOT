@@ -28,10 +28,10 @@
   }
 ]
 ,
-Reservation:{
-  name:'name',
-  email:'email@address.com',
-  days:1,
+"Reservation":{
+  "name":'name',
+  "email":'email@address.com',
+  "days":1,
   
 }  
 }
