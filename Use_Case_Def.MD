@@ -1,0 +1,7 @@
+## Use Case Definition
+
+1. The Web Application opens, displaying 2 options (Check-In and Check-Out) as buttons.
+2. The User will click one of the buttons depending on the nature of the request
+3. If the user chooses to check-in a vehicle, the app will dynamically swap views, where the page will display a form, for user input (name, carID, mileage, and fuel) all of which must be filled in before submitting. There are 3 additional buttons (back home,submit, and cancel). 'Submit' will check-in the vehicle, 'cancel' and 'back home' will return the user to the homepage.
+4. If the user chooses to check-out a vehicle, the app will dynamically swap views, where the page will display a form, for user input(name, days required, and distance) all of which must be filled in before submitting. There are 3 additional buttons(back home, submit, and cancel). 'Submit' will return a vehicle number for the user to use, 'cancel' and 'back home' will return the user to the homepage.
+5. There is an additional portion to the application, for employees with proper permissions, the admin portion. Where the page loads and lists 'XX' number of cars that have been checked-in show Car Number with a button next to it 'Check-In'. The employee will check for keys for each car, given the key number matches the carID # the user will then click 'Check-In'. Then the respective car will be returned to the car pool
