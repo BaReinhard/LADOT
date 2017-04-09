@@ -27,11 +27,4 @@
     "duedate":"04/09/2017"
   }
 ]
-,
-"Reservation":{
-  "name":"name",
-  "email":"email@address.com",
-  "days":1
-  
-}  
 }
