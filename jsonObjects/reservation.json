@@ -1,8 +1,8 @@
 {
-"Reservation":{
+"Reservations":[
   "name":"name",
   "email":"email@address.com",
   "days":1
   
-}  
+]  
 }
