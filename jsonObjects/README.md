@@ -1,7 +1,7 @@
-#JSON Strings
+# JSON Strings
 
 
-##Vehicle Ready for Checkout
+## Vehicle Ready for Checkout
 
 ```
 {
@@ -13,7 +13,7 @@
   }
 ```  
 
-##Vehicle Object After Checkout
+## Vehicle Object After Checkout
 
 ```
 {
