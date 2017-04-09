@@ -1,0 +1,30 @@
+{
+"Vehicle":
+  [
+  {
+    "id":5,
+    "mileage":123,
+    "fuel":0.5,
+    "checkedout":"email@address.com",
+    "duedate":"04/09/2017"
+  },{
+    "id":6,
+    "mileage":123,
+    "fuel":0.5,
+    "checkedout":"email@address.com",
+    "duedate":"04/09/2017"
+  },{
+    "id":7,
+    "mileage":123,
+    "fuel":0.5,
+    "checkedout":"email@address.com",
+    "duedate":"04/09/2017"
+  },{
+    "id":8,
+    "mileage":123,
+    "fuel":0.5,
+    "checkedout":"email@address.com",
+    "duedate":"04/09/2017"
+  }
+]
+}
