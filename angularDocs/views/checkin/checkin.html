@@ -2,14 +2,17 @@
     <h1> Check In Page</h1>
     <a href="#!/" class="btn btn-default">Back Home</a>
     <form>
-       <span>Name:</span> <div><input type="text" name=""/ ng-model="name"></div>
-        <span>Car ID:</span><div><input type="text" name=""ng-model="carID"/></div>
-        <span>Mileage:</span><div><input type="text" name=""/ng-model="mileage"></div>
-        <span>Fuel:</span><div><input type="text" name=""/ng-model="fuel"></div>
+        <span>Car ID:</span><div><input type="text" name=""ng-model="carID" required/></div>
+        <span>Email Address:</span><div><input type="email" name=""ng-model="email" required/></div>
+        <span>Mileage:</span><div><input type="text" name=""/ng-model="mileage" required></div>
+        <span>Fuel:</span><div><input type="text" name=""/ng-model="fuel" required></div>
+        <a class = "btn btn-default" ng-click="submit()">Submit</a>
+        <a href="#!/" class="btn btn-default">Cancel</a>
     </form>
     
-    <a href="#!/" class="btn btn-default">Cancel</a>
-    <a class = "btn btn-default" ng-click="submitted()">Submit</a>
-    <div ng-if="submit"> SUCCESSFULLY CHECKED OUT</div>
+   
     
+
+
+    <div ng-if="submitted">{{message}}</div>
 </div>
