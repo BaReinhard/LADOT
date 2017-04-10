@@ -23,6 +23,7 @@ app.controller('CheckInController',['$scope','$timeout','$http','getCheckedoutVe
                     $scope.carID = "";
                     $scope.fuel = "";
                     $scope.mileage = "";
+                    $scope.email = "";
                     $scope.checkInJSON = $scope.vehicles[i];
                     $scope.vehicles[i].pop
                     $scope.message = "Car has been checked in, please make sure to place the keys in the drop box";
