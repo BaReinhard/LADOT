@@ -6,7 +6,7 @@ LADOT Project
 ```
 Date:                 April 4th 2017
 
-Date Submitted:       (Date Here)
+Date Submitted:       (Date of Submittal Goes Here)
 
 Application Title:    LADOT Car Pool Application
 
