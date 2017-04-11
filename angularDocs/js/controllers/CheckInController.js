@@ -3,7 +3,11 @@ app.controller('CheckInController',['$scope','$timeout','$http','getCheckedoutVe
     $scope.fuel = "";
     $scope.mileage = "";
     $scope.checkInJSON ={};
+    $scope.email = "me@testdomain.com"
     $scope.submitted = false;
+    
+    //Regex to use to test for email input
+    $scope.regex = /^[a-z]+[a-z0-9._]+@testdomain.com$/;
     // GET EXISTING VEHICLES FROM Checked out POOL
     $scope.service = getCheckedoutVehicleService;
     $scope.vehicles=[];
@@ -11,10 +15,10 @@ app.controller('CheckInController',['$scope','$timeout','$http','getCheckedoutVe
         // Send CHECKEDOUT Vehicles to $scope.vehicles
        $scope.vehicles = response.data.Vehicle;
     });
-    $scope.submit = function(){
+     // Function to be Run on Submit
+    $scope.submitForm = function(isValid){
         // Check that form is filled
-        if ($scope.carID !="" && $scope.fuel != "" && $scope.email != "" && $scope.mileage != ""){
-            
+        if (isValid){
         
             // Check the pool of checked out vehicles for submitted
             for( var i = 0; i<$scope.vehicles.length;i++){

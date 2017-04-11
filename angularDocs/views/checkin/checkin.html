@@ -1,15 +1,26 @@
 <div class="checkin">
     <h1> Check In Page</h1>
     <a href="#!/" class="btn btn-default">Back Home</a>
-    <form>
+    <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
         <span>Car ID:</span><div><input type="text" name=""ng-model="carID" required/></div>
-        <span>Email Address:</span><div><input type="email" name=""ng-model="email" required/></div>
+        <span>Email Address:</span><div><input type="email" name="input" ng-model="email" ng-pattern=regex required></div>
+        <div role="alert">
+          <span class="error" ng-show="userForm.input.$error.required">
+            Required!</span>
+          <span class="error" ng-show="userForm.input.$error.pattern">
+            Not valid email!</span>
+        </div>
         <span>Mileage:</span><div><input type="text" name=""/ng-model="mileage" required></div>
         <span>Fuel:</span><div><input type="text" name=""/ng-model="fuel" required></div>
-        <a class = "btn btn-default" ng-click="submit()">Submit</a>
+        <button class="btn btn-default" type="submit">Submit</button>
         <a href="#!/" class="btn btn-default">Cancel</a>
     </form>
-    
+    <div role="alert">
+      <span class="error" ng-show="myForm.input.$error.required">
+        Required!</span>
+      <span class="error" ng-show="myForm.input.$error.email">
+        Not valid email!</span>
+    </div>
    
     
 

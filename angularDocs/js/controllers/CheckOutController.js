@@ -2,15 +2,16 @@ app.controller('CheckOutController',['$scope','$timeout','$http',function($scope
     $scope.submitted = false;
     $scope.name = "";
     $scope.daysrequired = 1;
-    $scope.email = "";
+    $scope.email = "me@testdomain.com"
     $scope.reservationJSON = {};
     $scope.message = "";
     $scope.vehicleCheckOutJSON = {};
+    $scope.regex = /^[a-z]+[a-z0-9._]+@testdomain.com$/;
     
     // Function to be Run on Submit
-    $scope.submit = function(){
+    $scope.submitForm = function(isValid){
         // Check that form is filled
-        if ($scope.name !="" && $scope.daysrequired != "" && $scope.email != ""){
+        if (isValid){
             // Create JSON to be sent
         $scope.reservationJSON = {
             name: $scope.name,
@@ -39,6 +40,7 @@ app.controller('CheckOutController',['$scope','$timeout','$http',function($scope
         }
         
         else{
+            console.log("not valid");
             // if not filled do nothing
         }
         
