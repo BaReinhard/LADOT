@@ -6,6 +6,8 @@ app.controller('CheckOutController',['$scope','$timeout','$http',function($scope
     $scope.reservationJSON = {};
     $scope.message = "";
     $scope.vehicleCheckOutJSON = {};
+    
+    //Regex to use to test for email input
     $scope.regex = /^[a-z]+[a-z0-9._]+@testdomain.com$/;
     
     // Function to be Run on Submit
