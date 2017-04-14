@@ -2,7 +2,8 @@
 "Reservations":{
   "name":"name",
   "email":"email@address.com",
-  "days":1
+  "days":1,
+  "updated":""
   
 } 
 }

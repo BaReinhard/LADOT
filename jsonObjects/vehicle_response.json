@@ -3,5 +3,6 @@
     "mileage":123,
     "fuel":0.5,
     "checkedout":"",
-    "duedate":""
+    "duedate":"",
+    "updated":""
   }
