@@ -3,7 +3,9 @@ app.controller('CheckInController',['$scope','$timeout','$http','getCheckedoutVe
     $scope.fuel = "";
     $scope.mileage = "";
     $scope.checkInJSON ={};
-    $scope.submitted = false;
+    $scope.Success = false;
+    $scope.NotFound = false;
+    $scope.found = false;
     //Regex to use to test for email input
     $scope.regex = /^[a-z]+[a-z0-9._]+@address.com$/;
     // GET EXISTING VEHICLES FROM Checked out POOL
@@ -32,16 +34,15 @@ app.controller('CheckInController',['$scope','$timeout','$http','getCheckedoutVe
      // Function to be Run on Submit
     $scope.submitForm = function(isValid){
         // Check that form is filled
-        console.log(isValid);
         if (isValid){
         
             // Check the pool of checked out vehicles for submitted
             for( var i = 0; i<$scope.vehicles.length;i++){
-                console.log($scope.vehicles[i].id);
-                console.log($scope.carID);
+                
                 if ($scope.vehicles[i].id == $scope.carID & $scope.mileage > $scope.mileageMin) {
+                    $scope.found =true;
                     $scope.message = "Car has been checked in, please make sure to place the keys in the drop box";
-                    $scope.submitted = true;
+                    $scope.Success = true;
 
                     $timeout(function(){
                         $scope.carID = "";
@@ -50,9 +51,10 @@ app.controller('CheckInController',['$scope','$timeout','$http','getCheckedoutVe
                         $scope.checkInJSON = $scope.vehicles[i];
                         $scope.vehicles[i].pop
                         $scope.message ="";
-                        $scope.submitted = false;
                         $scope.email = "";
-                    },3000);
+                        $scope.found = false;
+                        $scope.Success= false;
+                    },5000);
                     
                     // REMOVE VEHICLE FROM DATABASE
                     
@@ -60,12 +62,14 @@ app.controller('CheckInController',['$scope','$timeout','$http','getCheckedoutVe
                     break;
                 }
                 else{
+                    if(i == $scope.vehicles.length-1 & $scope.found == false){
                     $scope.message = "Car Was Not Checked In Please make sure you have entered in the correct information";
-                    $scope.submitted = true;
+                    $scope.NotFound = true;
                     $timeout(function(){
                         $scope.message = "";
-                        $scope.submitted = false;
-                    },3000);
+                        $scope.NotFound = false;
+                    },5000);
+                    }
                 }
             }
 

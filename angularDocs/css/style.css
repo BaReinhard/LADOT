@@ -13,6 +13,12 @@
 	
 	
 }
+.denied{
+	color:red;
+}
+.success{
+	color:green;
+}
 .error{
 	padding-top: 0;
 	color:red;
@@ -53,6 +59,25 @@ html:before{
 }
 html{
 	overflow:hidden;
+}
+.popup{
+	z-index: 1;
+height: 50%;
+padding: 0 100px;
+margin: 0 auto;
+
+background: rgba(255,255,255,.9);
+border-radius:15px;
+box-shadow: 10px 10px 5px #000000;
+position:absolute;
+top: 25%;
+left: 25%;
+right:25%;
+}
+.message{
+	font-size:2vw;
+	position: relative;
+	top:30%;
 }
 
 @media (min-width:320px)  { 

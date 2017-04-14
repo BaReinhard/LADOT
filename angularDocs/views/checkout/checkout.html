@@ -2,12 +2,17 @@
     <h1>Check Out Page</h1>
     <a href="#!/" class="btn btn-default">Back Home</a>
     <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
-        <span>Name:</span> <div><input type="text" name=""/ ng-model="name" required></div>
-        <span>Email Address:</span><div><input type="email" name="input" ng-model="email" ng-pattern=regex required></div>
+        <span>Name:</span> <div><input type="text" name="name"/ ng-model="name" required></div>
         <div role="alert">
-          <span class="error" ng-show="userForm.input.$error.required">
+          <span class="error" ng-show="userForm.name.$error.required">
             Required!</span>
-          <span class="error" ng-show="userForm.input.$error.pattern">
+          
+        </div>
+        <span>Email Address:</span><div><input type="email" name="email" ng-model="email" ng-pattern=regex required></div>
+        <div role="alert">
+          <span class="error" ng-show="userForm.email.$error.required">
+            Required!</span>
+          <span class="error" ng-show="userForm.email.$error.pattern">
             Not valid email!</span>
         </div>
         <span>Days Required:</span><div><input type="number" name=""ng-model="daysrequired" required/></div>
@@ -17,7 +22,11 @@
     
     
     
-    <div ng-if="submitted"> SUCCESSFULLY CHECKED OUT</div>
-    <div ng-if="submitted">{{message}}</div>
+    <div class="popup" ng-if="Success">    
+  <div class="message success">{{message}}</div>
+</div>
+<div class="popup" ng-if="Denied">    
+  <div class="message denied">{{message}}</div>
+</div>
     
 </div>

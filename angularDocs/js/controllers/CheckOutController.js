@@ -1,5 +1,6 @@
 app.controller('CheckOutController',['$scope','$timeout','$http',function($scope,$timeout,$http){
-    $scope.submitted = false;
+    $scope.Success = false;
+    $scope.Denied = false;
     $scope.name = "";
     $scope.daysrequired = 1;
     $scope.email = "me@testdomain.com"
@@ -27,22 +28,26 @@ app.controller('CheckOutController',['$scope','$timeout','$http',function($scope
         $http.get("https://raw.githubusercontent.com/BaReinhard/LADOT/master/jsonObjects/vehicle_response.json").then(function(response){
             console.log(response.data);
             $scope.message = "Car " + response.data.id + " is ready for you";
-            $scope.submitted = true;
+            $scope.Success = true;
             $scope.name = "";
             $scope.daysrequired = "";
             $scope.email = "";
             $scope.distance = "";
-            $timeout(function(){
-            $scope.submitted = false;
+        $timeout(function(){
+            $scope.Success = false;
             
-        },3000);
+        },5000);
         });
         // Timeout to Have The Alert Disappear
         
         }
         
         else{
-            console.log("not valid");
+            $scope.Denied = true;
+            $scope.message = "Car has not been checked out, please make sure you have entered in correct information";
+            $timeout(function(){
+               $scope.Denied=false; 
+            },5000);
             // if not filled do nothing
         }
         
