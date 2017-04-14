@@ -2,7 +2,7 @@
     <h1> Check In Page</h1>
     <a href="#!/" class="btn btn-default">Back Home</a>
     <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
-        <span>Car ID:</span><div><input type="text" name=""ng-model="carID" ng-blur="getEmail()" required/></div>
+        <span>Car ID:</span><div><input type="text" name=""ng-model="carID" ng-blur="getInfo()" required/></div>
         <span>Email Address:</span><div><input type="email" name="email" ng-model="email" ng-pattern=regex required></div>
         <div role="alert">
           <span class="error" ng-show="userForm.email.$error.required">

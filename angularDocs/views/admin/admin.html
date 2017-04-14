@@ -2,7 +2,7 @@
     <h1>Administrative Page</h1>
     <a href="#!/" class="btn btn-default">Back Home</a>
 <div style="width: 75%;margin: 0 auto;" class="panel panel-default">
-  <div class="panel-body" ng-repeat="v in vehicles.Vehicle">
+  <div class="panel-body" ng-repeat="v in vehicles.Vehicle | filter: id">
     Car #{{v.id}} <a class="btn btn-default" ng-click="vehicles.Vehicle.splice($index,1)">Check-In</a>
   </div>
 </div>

@@ -1,9 +1,10 @@
 {
 "Reservations":{
-  "name":"name",
-  "email":"email@address.com",
-  "days":1,
-  "updated":""
+  "checkedout":"email@address.com",
+  "duedate":"04/15/2017",
+  "updated":"04/14/2017"
   
 } 
 }
+
+
