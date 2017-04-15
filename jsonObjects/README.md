@@ -10,7 +10,7 @@
     "fuel":0.5,
     "checkedout":"",
     "duedate":"",
-    "updated":""
+    "updated":"04/13/2017"
   }
 ```  
 
