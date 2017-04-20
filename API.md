@@ -14,7 +14,8 @@
 4. <b>/returnkey (PUT)</b> - The /returnkey endpoint will be used for returning checked-in vehicles to the 'available' pool. Will change status from 'checkedin' to 'available'
     * <b>JSON Object Passed</b>: {carid:"string"}
     * <b>JSON Object Returned</b>: {}
-    
+
+### API Actions
     
 <p>I feel as though we should simply send data to the backend/API have the backend make changes to the retrieved information and save it to the database then send back whatever necessary information. This was we can prevent some chattiness between the client and server. It should essentially work as follows:</p>
 <p>
