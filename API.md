@@ -16,8 +16,10 @@
     * <b>JSON Object Returned</b>: {}
     
     
-I feel as though we should simply send data to the backend/API have the backend make changes to the retrieved information and save it to the database then send back whatever necessary information. This was we can prevent some chattiness between the client and server. It should essentially work as follows:
-Client Sends data to server. Server takes information and pulls the necessary data from the DB. Server will then insert the new data to the retrieved information and post it back to the database. Once all this has been done the Server will then return the desired data back to the client to be displayed.
-The one instance where this will not occur is on checkin or more specifically the /findcar endpoint, the client will request data based on ID and email. The server will return the vehicle object to be displayed as the "Part 2" of checkin. The user will ensure the info is correct then submit it to the /checkin endpoint. In which the server will find the match data, make the updates and then return it to the database.
+<p>I feel as though we should simply send data to the backend/API have the backend make changes to the retrieved information and save it to the database then send back whatever necessary information. This was we can prevent some chattiness between the client and server. It should essentially work as follows:</p>
+<p>
+Client Sends data to server. Server takes information and pulls the necessary data from the DB. Server will then insert the new data to the retrieved information and post it back to the database. Once all this has been done the Server will then return the desired data back to the client to be displayed.</p>
+<p>
+The one instance where this will not occur is on checkin or more specifically the /findcar endpoint, the client will request data based on ID and email. The server will return the vehicle object to be displayed as the "Part 2" of checkin. The user will ensure the info is correct then submit it to the /checkin endpoint. In which the server will find the match data, make the updates and then return it to the database.</p>
 
 *** The terms here may not be accurate, but are used to explain the inner workings in laymans terms.
