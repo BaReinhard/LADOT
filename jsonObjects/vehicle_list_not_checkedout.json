@@ -6,25 +6,29 @@
     "mileage":123,
     "fuel":0.5,
     "checkedout":"",
-    "duedate":""
+    "duedate":"",
+    "updated":""
   },{
     "id":2,
     "mileage":123,
     "fuel":0.5,
     "checkedout":"",
-    "duedate":""
+    "duedate":"",
+    "updated":""
   },{
     "id":3,
     "mileage":123,
     "fuel":0.5,
-    "checkedout":"email@address.com",
-    "duedate":""
+    "checkedout":"",
+    "duedate":"",
+    "updated":""
   },{
     "id":4,
     "mileage":123,
     "fuel":0.5,
     "checkedout":"",
-    "duedate":""
+    "duedate":"",
+    "updated":""
   }
 ]
 }

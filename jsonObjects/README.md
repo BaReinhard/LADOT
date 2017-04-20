@@ -9,7 +9,8 @@
     "mileage":123,
     "fuel":0.5,
     "checkedout":"",
-    "duedate":""
+    "duedate":"",
+    "updated":"04/13/2017"
   }
 ```  
 
@@ -21,7 +22,8 @@
     "mileage":123,
     "fuel":0.5,
     "checkedout":"brett@reinhards.us",
-    "duedate":"04/12/2017"
+    "duedate":"04/12/2017",
+    "updated":"04/13/2017"
   }
 ```
 
@@ -30,9 +32,9 @@
 ```
 {
 "Reservation":{
-  "name":"name",
-  "email":"email@address.com",
-  "days":1
+  "checkedout":"email@address.com",
+  "duedate":"04/15/2017",
+  "updated":"04/14/2017"
   
 }  
 }

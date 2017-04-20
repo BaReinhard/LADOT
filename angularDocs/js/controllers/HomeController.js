@@ -3,8 +3,10 @@ app.controller('HomeController',['$scope','getVehicleService',function($scope,ge
     $scope.service = getVehicleService;
     $scope.vehicles = {};
     $scope.service.then(function(responseData){
-        $scope.vehicles = responseData;
-        console.log(responseData);
+    	console.log("Storing Vehicles in $scope.vehicles in HomeController, here they are:");
+    	$scope.vehicles = responseData;
+    	console.log($scope.vehicles)
+
+        
     });
-    console.log($scope.vehicles)
 }]);
