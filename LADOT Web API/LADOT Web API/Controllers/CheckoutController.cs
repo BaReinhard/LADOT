@@ -17,10 +17,36 @@ namespace LADOT_Web_API.Controllers
         private LADOT_Web_APIContext db = new LADOT_Web_APIContext();
 
         // GET: api/Checkout
-        public IQueryable<Vehicle> GetVehicles()
+        public IHttpActionResult GetVehicles()
         {
+            var query = db.Vehicles.FirstOrDefault(i => i.status != "checkedout");
+
+            if (query != null)
+            {
+                db.Entry(query).State = EntityState.Modified;
+                db.Entry(query).Entity.status = "checkedout";
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!VehicleExists(db.Entry(query).Entity.carId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return Ok(db.Entry(query).Entity);
+            }
+            else
+            {
+                return Ok("There are no vehicles available");
+            }
             
-            return db.Vehicles;
         }
 
         // GET: api/Checkout/5
@@ -51,7 +77,7 @@ namespace LADOT_Web_API.Controllers
             }
 
             db.Entry(vehicle).State = EntityState.Modified;
-
+            db.Entry(vehicle).Entity.status = "checkedout";
             try
             {
                 db.SaveChanges();
@@ -68,7 +94,8 @@ namespace LADOT_Web_API.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(db.Entry(vehicle));
+            //return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Checkout
