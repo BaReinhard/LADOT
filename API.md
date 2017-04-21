@@ -16,10 +16,10 @@
     * <b>JSON Object Returned</b>: {Status 200 (OK)}
 
 ### API Actions
-<p> The /checkout endpoint will be handled as a PUT request, which will require an email, which will return the first vehicle available that has not been used in the longest amount of time. The endpoint will update the status to checkedout as well as insert the email address and update the updated field to the current date.
+<p> The <b>/checkout</b> endpoint will be handled as a PUT request, which will require an email, which will return the first vehicle available that has not been used in the longest amount of time. The endpoint will update the status to checkedout as well as insert the email address and update the updated field to the current date.
 </p>
-<p> The /findcar endpoint</p>
-<p> The /checkin endpoint</p>
-<p> The /returnkey endpoint will be handled as a PUT request, which will require a carId and email address, which will return the car with the matching carid and email. The endpoint will update the status and return it to available as well as strip the email address and update the updated field.
+<p> The <b>/findcar</b> endpoint</p>
+<p> The <b>/checkin</b> endpoint</p>
+<p> The <b>/returnkey</b> endpoint will be handled as a PUT request, which will require a carId and email address, which will return the car with the matching carid and email. The endpoint will update the status and return it to available as well as strip the email address and update the updated field.
 
 *** The terms here may not be accurate, but are used to explain the inner workings in laymans terms.
