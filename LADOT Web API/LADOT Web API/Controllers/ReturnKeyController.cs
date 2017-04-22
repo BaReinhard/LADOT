@@ -66,7 +66,7 @@ namespace LADOT_Web_API.Controllers
             }
             else
             {
-                return Ok("There are no vehicles left to checkin");
+                return StatusCode(HttpStatusCode.NotFound);
             }
         }
 
