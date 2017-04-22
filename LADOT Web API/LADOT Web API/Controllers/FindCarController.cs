@@ -16,40 +16,38 @@ namespace LADOT_Web_API.Controllers
     {
         private LADOT_Web_APIContext db = new LADOT_Web_APIContext();
 
-        // GET: api/FindCar
-        public IQueryable<Vehicle> GetVehicles()
-        {
-            return db.Vehicles;
-        }
+        //// GET: api/FindCar
+        //public IQueryable<Vehicle> GetVehicles()
+        //{
+        //    return db.Vehicles;
+        //}
 
-        // GET: api/FindCar/5
-        [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult GetVehicle(string id)
-        {
-            Vehicle vehicle = db.Vehicles.Find(id);
-            if (vehicle == null)
-            {
-                return NotFound();
-            }
+        //// GET: api/FindCar/5
+        //[ResponseType(typeof(Vehicle))]
+        //public IHttpActionResult GetVehicle(string id)
+        //{
+        //    Vehicle vehicle = db.Vehicles.Find(id);
+        //    if (vehicle == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(vehicle);
-        }
+        //    return Ok(vehicle);
+        //}
 
-        // PUT: api/FindCar/5
+        // PUT: api/FindCar
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutVehicle(string id, Vehicle vehicle)
+        public IHttpActionResult PutVehicle( Vehicle vehicle)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != vehicle.carId)
-            {
-                return BadRequest();
-            }
+            var query = db.Vehicles.FirstOrDefault(i => i.status == "checkedout" && i.carId == vehicle.carId && i.email == vehicle.email);
 
-            db.Entry(vehicle).State = EntityState.Modified;
+            db.Entry(query).State = EntityState.Modified;
+            db.Entry(query).Entity.updated = DateTime.Today.ToShortDateString();
 
             try
             {
@@ -57,7 +55,7 @@ namespace LADOT_Web_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VehicleExists(id))
+                if (!VehicleExists(vehicle.carId))
                 {
                     return NotFound();
                 }
@@ -67,54 +65,54 @@ namespace LADOT_Web_API.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(db.Entry(query).Entity);
         }
 
-        // POST: api/FindCar
-        [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult PostVehicle(Vehicle vehicle)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/FindCar
+        //[ResponseType(typeof(Vehicle))]
+        //public IHttpActionResult PostVehicle(Vehicle vehicle)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Vehicles.Add(vehicle);
+        //    db.Vehicles.Add(vehicle);
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (VehicleExists(vehicle.carId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateException)
+        //    {
+        //        if (VehicleExists(vehicle.carId))
+        //        {
+        //            return Conflict();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return CreatedAtRoute("DefaultApi", new { id = vehicle.carId }, vehicle);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = vehicle.carId }, vehicle);
+        //}
 
-        // DELETE: api/FindCar/5
-        [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult DeleteVehicle(string id)
-        {
-            Vehicle vehicle = db.Vehicles.Find(id);
-            if (vehicle == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/FindCar/5
+        //[ResponseType(typeof(Vehicle))]
+        //public IHttpActionResult DeleteVehicle(string id)
+        //{
+        //    Vehicle vehicle = db.Vehicles.Find(id);
+        //    if (vehicle == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Vehicles.Remove(vehicle);
-            db.SaveChanges();
+        //    db.Vehicles.Remove(vehicle);
+        //    db.SaveChanges();
 
-            return Ok(vehicle);
-        }
+        //    return Ok(vehicle);
+        //}
 
         protected override void Dispose(bool disposing)
         {

@@ -16,40 +16,44 @@ namespace LADOT_Web_API.Controllers
     {
         private LADOT_Web_APIContext db = new LADOT_Web_APIContext();
 
-        // GET: api/CheckIn
-        public IQueryable<Vehicle> GetVehicles()
-        {
-            return db.Vehicles;
-        }
+        //// GET: api/CheckIn
+        //public IQueryable<Vehicle> GetVehicles()
+        //{
+        //    return db.Vehicles;
+        //}
 
-        // GET: api/CheckIn/5
-        [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult GetVehicle(string id)
-        {
-            Vehicle vehicle = db.Vehicles.Find(id);
-            if (vehicle == null)
-            {
-                return NotFound();
-            }
+        //// GET: api/CheckIn/5
+        //[ResponseType(typeof(Vehicle))]
+        //public IHttpActionResult GetVehicle(string id)
+        //{
+        //    Vehicle vehicle = db.Vehicles.Find(id);
+        //    if (vehicle == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(vehicle);
-        }
+        //    return Ok(vehicle);
+        //}
 
-        // PUT: api/CheckIn/5
+        // PUT: api/CheckIn
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutVehicle(string id, Vehicle vehicle)
+        public IHttpActionResult PutVehicle(Vehicle vehicle)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != vehicle.carId)
-            {
-                return BadRequest();
-            }
+            
 
             db.Entry(vehicle).State = EntityState.Modified;
+            db.Entry(vehicle).Entity.status = "checkedin";
+            db.Entry(vehicle).Entity.updated = DateTime.Today.ToShortDateString();
+            db.Entry(vehicle).Entity.comments = vehicle.comments;
+            db.Entry(vehicle).Entity.lastFuel = db.Entry(vehicle).Entity.currentFuel;
+            db.Entry(vehicle).Entity.lastMileage = db.Entry(vehicle).Entity.currentMileage;
+            db.Entry(vehicle).Entity.currentFuel = vehicle.currentFuel;
+            db.Entry(vehicle).Entity.currentMileage = vehicle.currentMileage;
 
             try
             {
@@ -57,7 +61,7 @@ namespace LADOT_Web_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VehicleExists(id))
+                if (!VehicleExists(vehicle.carId))
                 {
                     return NotFound();
                 }
@@ -70,51 +74,51 @@ namespace LADOT_Web_API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/CheckIn
-        [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult PostVehicle(Vehicle vehicle)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/CheckIn
+        //[ResponseType(typeof(Vehicle))]
+        //public IHttpActionResult PostVehicle(Vehicle vehicle)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Vehicles.Add(vehicle);
+        //    db.Vehicles.Add(vehicle);
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (VehicleExists(vehicle.carId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateException)
+        //    {
+        //        if (VehicleExists(vehicle.carId))
+        //        {
+        //            return Conflict();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return CreatedAtRoute("DefaultApi", new { id = vehicle.carId }, vehicle);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = vehicle.carId }, vehicle);
+        //}
 
-        // DELETE: api/CheckIn/5
-        [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult DeleteVehicle(string id)
-        {
-            Vehicle vehicle = db.Vehicles.Find(id);
-            if (vehicle == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/CheckIn/5
+        //[ResponseType(typeof(Vehicle))]
+        //public IHttpActionResult DeleteVehicle(string id)
+        //{
+        //    Vehicle vehicle = db.Vehicles.Find(id);
+        //    if (vehicle == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Vehicles.Remove(vehicle);
-            db.SaveChanges();
+        //    db.Vehicles.Remove(vehicle);
+        //    db.SaveChanges();
 
-            return Ok(vehicle);
-        }
+        //    return Ok(vehicle);
+        //}
 
         protected override void Dispose(bool disposing)
         {
