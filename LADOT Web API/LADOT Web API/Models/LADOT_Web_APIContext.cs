@@ -20,5 +20,6 @@ namespace LADOT_Web_API.Models
         }
 
         public System.Data.Entity.DbSet<LADOT_Web_API.Models.Vehicle> Vehicles { get; set; }
+        public System.Data.Entity.DbSet<LADOT_Web_API.Models.History> Historys { get; set; }
     }
 }

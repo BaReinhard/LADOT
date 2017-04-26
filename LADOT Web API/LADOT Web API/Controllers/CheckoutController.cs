@@ -16,13 +16,27 @@ namespace LADOT_Web_API.Controllers
     {
         private LADOT_Web_APIContext db = new LADOT_Web_APIContext();
 
-        
+
         // GET: api/Checkout
         public IHttpActionResult GetVehicles()
         {
             //if (1 == 1)
             //{
-                return Ok(db.Vehicles);
+            //var query = from v in db.Vehicles
+            //            where v.status == "available"
+            //            select v;
+
+            //Check for History
+            var query = from d in db.Historys
+                        select d;
+            if(query != null)
+            {
+                return Ok(query);
+            }
+           else
+            {
+                return NotFound();
+            }
             //}
             //var query = db.Vehicles.OrderBy(d => d.updated).FirstOrDefault(i => i.status == "available");
 
@@ -52,36 +66,69 @@ namespace LADOT_Web_API.Controllers
             //{
             //    return Ok("There are no vehicles available");
             //}
-            
+
         }
 
         //// GET: api/Checkout/5
-        //[ResponseType(typeof(Vehicle))]
-        //public IHttpActionResult GetVehicle(string id)
-        //{
-        //    Vehicle vehicle = db.Vehicles.Find(id);
-        //    if (vehicle == null)
-        //    {
-        //        return NotFound();
-        //    }
+        [ResponseType(typeof(Vehicle))]
+        public IHttpActionResult GetVehicle(string id)
+        {
+            if (id == "history")
+            {
+                var query = from h in db.Historys
+                            where h.status == "checkedout"
+                            select h;
+                return Ok(query);
+            }
+            else if (id == "vehicles")
+            {
+                return Ok(db.Vehicles);
+            }else
+            {
+                Vehicle vehicle = db.Vehicles.Find(id);
+                if (vehicle == null)
+                {
+                    return NotFound();
+                }
 
-        //    return Ok(vehicle);
-        //}
+                return Ok(vehicle);
+            }
+            
+        }
         // Request a car for checkout
         // PUT: api/Checkout/
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutVehicle(Vehicle vehicle)
+        public IHttpActionResult PutVehicle(VehicleRequest vehicle)
         {
 
             var query = db.Vehicles.OrderBy(d => d.updated).FirstOrDefault(i => i.status == "available");
-
+            // Ensure query returned a non null value
             if (query != null)
             {
+                // Modify queried Vehicle Object within Database
                 db.Entry(query).State = EntityState.Modified;
                 db.Entry(query).Entity.email = vehicle.email;
                 db.Entry(query).Entity.updated = DateTime.Today.ToShortDateString();
-                
+                db.Entry(query).Entity.duedate = vehicle.duedate;
                 db.Entry(query).Entity.status = "checkedout";
+
+                // Create History Object to Store in Historys Database
+                History hist = new History {
+                                                email = vehicle.email,
+                                                carId = db.Entry(query).Entity.carId,
+                                                date = db.Entry(query).Entity.updated,
+                                                fuel = db.Entry(query).Entity.lastFuel,
+                                                mileage = db.Entry(query).Entity.lastMileage,
+                                                duedate = db.Entry(query).Entity.duedate,
+                                                name = vehicle.name,
+                                                status = "checkedout",
+                                                destination = vehicle.destination
+                                            };
+
+                // Add Object to History Database
+                db.Historys.Add(hist);
+
+                // Save the Changes
                 try
                 {
                     db.SaveChanges();
@@ -101,39 +148,10 @@ namespace LADOT_Web_API.Controllers
             }
             else
             {
-                return Ok("There are no vehicles available");
+                return NotFound();
             }
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
-
-            //if (id != vehicle.carId)
-            //{
-            //    return BadRequest();
-            //}
-
-            //db.Entry(vehicle).State = EntityState.Modified;
-            //db.Entry(vehicle).Entity.status = "checkedout";
-            //try
-            //{
-            //    db.SaveChanges();
-            //}
-            //catch (DbUpdateConcurrencyException)
-            //{
-            //    if (!VehicleExists(id))
-            //    {
-            //        return NotFound();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-
-            //return Ok(db.Entry(vehicle));
-            //return StatusCode(HttpStatusCode.NoContent);
         }
+            
 
         //// POST: api/Checkout
         //[ResponseType(typeof(Vehicle))]
