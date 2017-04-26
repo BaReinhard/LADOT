@@ -1,0 +1,75 @@
+﻿@model IEnumerable<LADOT_Web_API.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastFuel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.currentFuel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastMileage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.currentMileage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.updated)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastFuel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.currentFuel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.comments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastMileage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.currentMileage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.updated)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.carId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.carId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.carId })
+        </td>
+    </tr>
+}
+
+</table>
