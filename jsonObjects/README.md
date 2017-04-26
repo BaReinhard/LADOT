@@ -5,10 +5,11 @@
 
 ```
 {
-    "id":1,
+    "id":"012",
     "mileage":123,
-    "fuel":0.5,
-    "checkedout":"",
+    "fuel":1,
+    "email":"",
+    "status":"available",
     "duedate":"",
     "updated":"04/13/2017"
   }
@@ -18,24 +19,40 @@
 
 ```
 {
-    "id":1,
+    "id":"012",
     "mileage":123,
-    "fuel":0.5,
-    "checkedout":"brett@reinhards.us",
-    "duedate":"04/12/2017",
+    "fuel":1,
+    "email":"new@address.com",
+    "status":"checkedout",
+    "duedate":"04/14/2017",
     "updated":"04/13/2017"
   }
 ```
 
-## Reservation Object
+## Vehicle Object After Checkin
 
 ```
 {
-"Reservation":{
-  "checkedout":"email@address.com",
-  "duedate":"04/15/2017",
-  "updated":"04/14/2017"
-  
-}  
-}
+    "id":"012",
+    "mileage":123,
+    "fuel":1,
+    "email":"new@address.com",
+    "status":"checkin",
+    "duedate":"04/14/2017",
+    "updated":"04/13/2017"
+  }
+```
+
+## Vehicle Object After ReturnKey
+
+```
+{
+    "id":"012",
+    "mileage":150,
+    "fuel":2,
+    "email":"new@address.com",
+    "status":"available",
+    "duedate":"",
+    "updated":"04/14/2017"
+  }
 ```
