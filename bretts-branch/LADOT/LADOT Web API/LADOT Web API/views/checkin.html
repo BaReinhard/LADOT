@@ -1,0 +1,87 @@
+﻿<div class="app-container container">
+    <div class="row">
+        <div id="div1" class="col-sm-10 col-sm-offset-1">
+
+            <!-- Page Header -->
+            <a href="#!/" class="btn btn-outline-primary app-container-back"><span class="glyphicon glyphicon-menu-left "></span>Home</a>
+            <h1 class="app-container-header"> Check-In</h1>
+            <h4 class="app-container-header" ng-show="showForm"> Step 2: Complete Car Check-In Form</h4>
+            <hr />
+            <div ng-bind-html="renderHtml(resultMessage)"></div>
+            <table id="table-data" ng-show="showForm">
+                <tr>
+                    <td>Car ID</td>
+                    <td>{{vehicles[0].carId}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{vehicles[0].email}}</td>
+                </tr>
+                <tr>
+                    <td>Starting Mileage</td>
+                    <td>{{vehicles[0].lastMileage}}</td>
+                </tr>
+                <tr>
+                    <td>Starting Fuel</td>
+                    <td>{{vehicles[0].lastFuel}}</td>
+                </tr>
+
+            </table>
+            <hr />
+            <!-- Form -->
+            <form name="userForm" ng-submit="checkIn()" ng-show="showForm" novalidate>
+ 
+                <!-- Mileage -->
+                <div class="form-group" ng-class="{ 'has-error' : userForm.miles.$invalid && !userForm.miles.$pristine }">
+                    <label for="miles" class="cols-sm-2">Return Mileage</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group ">
+                            <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-road"></span></span>
+                            <input type="text" class="form-control" name="miles" id="miles" placeholder="Enter Returned Mileage" ng-model="mileage" required>
+                        </div>
+                        <p ng-show="userForm.miles.$invalid && !userForm.miles.$pristine" class="help-block">The mileage is required.</p>
+                    </div>
+                </div>
+
+                <!-- Fuel -->
+                <div class="form-group">
+                    <label for="days" class="cols-sm-2">Return Fuel</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group ">
+                            <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-dashboard "></span></span>
+                            <select class="form-control" ng-model="returnedFuel" required>
+                                <option ng-repeat="fue in fuel" value="{{fue.value}}">{{fue.label}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-warning "> <p><strong></strong> Please take a moment to comment if there were any mechanical, cosmetic, or other issues.</p></div>
+                <!-- Comments --> 
+                <div class="form-group">
+                    <label for="comment" class="cols-sm-2"> <span class="glyphicon glyphicon-pencil"></span>  Comments</label>
+                    <div class="cols-sm-12">
+                        <div class="input-group ">
+                            <textarea class="form-control" cols="100" rows="5" id="comment" ng-model="inputMessage" maxlength="200"></textarea>
+                            <p class="text-right">{{ 200 - inputMessage.length + ' characters left' }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+
+                <button type="submit" class="btn btn-success btn-lg btn-block checkIn-button" ng-disabled="userForm.$invalid"><span class="glyphicon glyphicon-check"></span> Check In Car</button>
+
+                <div class="cancel-button">
+                    <a href="#!/">Cancel</a>
+                </div>
+            </form>
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+

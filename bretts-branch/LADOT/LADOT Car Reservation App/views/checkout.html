@@ -1,0 +1,68 @@
+<div class="app-container container">
+    <div class="row">
+        <div id="div1" class="col-sm-10 col-sm-offset-1">
+            <!-- Page Header -->
+            <a href="#!/" class="btn btn-outline-primary app-container-back"><span class="glyphicon glyphicon-menu-left "></span>Back</a>
+            <h1 class="app-container-header">Check-Out</h1>
+            <h4 class="app-container-header"> Complete Car Check-Out Form</h4>
+            <hr />
+            <div ng-bind-html="renderHtml(resultMessage)"></div>
+            <!-- Form -->
+            <form name="userForm" ng-submit="checkOut()" ng-show="showForm"  novalidate>
+
+                <!-- Name -->
+                <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+                    <label for="name" class="cols-sm-2 control-label">Name</label>
+                    <div class="input-group">
+                        <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-user "></span></span>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" ng-model="name" required>
+
+                    </div>
+                    <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                    <label for="email" class="cols-sm-2 control-label">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-envelope "></span></span>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email" ng-model="email" required>
+
+                    </div>
+                    <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+                </div>
+
+                <!-- Destination -->
+                <div class="form-group" ng-class="{ 'has-error' : userForm.destination.$invalid && !userForm.destination.$pristine }">
+                    <label for="destination" class="cols-sm-2 control-label">Destination</label>
+                    <div class="input-group">
+                        <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-map-marker"></span></span>
+                        <input type="text" class="form-control" name="destination" id="destination" placeholder="Enter your trip destination" ng-model="destination" required>
+
+                    </div>
+                    <p ng-show="userForm.destination.$invalid && !userForm.destination.$pristine" class="help-block">Enter a destination.</p>
+                </div>
+
+                <!-- Days -->
+                <div class="form-group" ng-class="{ 'has-error' : userForm.days.$invalid && !userForm.days.$pristine }">
+                    <label for="days" class="cols-sm-2">Number of Days Needed</label>
+
+                    <div class="input-group ">
+                        <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-calendar "></span></span>
+                        <input type="number" class="form-control" name="days" id="days" ng-model="daysrequired" value="1" min="1" max="30" required >
+                    </div>
+                    <p ng-show="userForm.days.$invalid && !userForm.days.$pristine" class="help-block">Enter the number of days needed. Maximum: 30 days.</p>
+                </div>
+
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary btn-lg btn-block checkIn-button" ng-disabled="userForm.$invalid"><span class="glyphicon glyphicon-unchecked"></span> Check Out Car</button>
+                <div class="cancel-button">
+                    <a href="#!/">Cancel</a>
+                </div>
+            </form >      
+
+        </div>
+    </div>
+</div>
+
