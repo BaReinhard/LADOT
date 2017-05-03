@@ -9,7 +9,7 @@ app.controller('CheckInController', ['$scope', '$timeout', '$http', '$sce', '$lo
     $scope.returnDate;
     $scope.overDue = false;
     $scope.checkInJSON = {};
-    
+    $scope.inputMessage = "";
 
     // Dropdown Options
     $scope.fuel = [{
@@ -111,8 +111,11 @@ app.controller('CheckInController', ['$scope', '$timeout', '$http', '$sce', '$lo
             $scope.showForm = false;
             $scope.vehicleJSON = $scope.vehicles[0];
             $scope.vehicleJSON.currentFuel = $scope.returnedFuel;
+            console.log($scope.returnedFuel);
             $scope.vehicleJSON.currentMileage = $scope.mileage;
-            $scope.vehicleJSON.comments = $scope.comments;
+            console.log($scope.mileage);
+            $scope.vehicleJSON.comments = $scope.inputMessage;
+            console.log($scope.vehicleJSON);
             console.log($scope.vehicleJSON);
             $http.put('/api/checkin', $scope.vehicleJSON).then(function (response) {
                 console.log("Success");

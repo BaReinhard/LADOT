@@ -20,5 +20,8 @@ namespace LADOT_Web_API.Models
         public string email { get; set; }
         public string updated { get; set; }
         public string duedate { get; set; }
+        public string name { get; set; }
+        public string destination { get; set; }
+
     }
 }

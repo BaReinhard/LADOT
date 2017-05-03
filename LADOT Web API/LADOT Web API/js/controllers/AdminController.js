@@ -7,6 +7,7 @@ app.controller('AdminController',['$scope','$http',function($scope,$http){
     // Upon response execute
     $http.get("/api/returnkey").then(function(responseData){
         $scope.vehicles = responseData.data;
+        console.log($scope.vehicles);
         
     });
     

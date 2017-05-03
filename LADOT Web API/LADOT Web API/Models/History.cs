@@ -11,13 +11,16 @@ namespace LADOT_Web_API.Models
         [Key]
         public int Id { get; set; }
         public string carId { get; set; }
-        public string name { get; set; }
-        public string date { get; set; }
-        public string duedate { get; set; }
-        public string email { get; set; }
-        public int mileage { get; set; }
-        public int fuel { get; set; }
         public string status { get; set; }
+        public int lastFuel { get; set; }
+        public int currentFuel { get; set; }
+        public string comments { get; set; }
+        public int lastMileage { get; set; }
+        public int currentMileage { get; set; }
+        public string email { get; set; }
+        public string updated { get; set; }
+        public string duedate { get; set; }
+        public string name { get; set; }
         public string destination { get; set; }
     }
 }

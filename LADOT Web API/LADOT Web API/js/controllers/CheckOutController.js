@@ -32,10 +32,11 @@ app.controller('CheckOutController', ['$scope', '$timeout', '$http', '$sce', '$l
             $scope.reservationJSON = {
                 name: $scope.name,
                 email: $scope.email,
-                duedate: $scope.getDueDate(),
+                duedate: $scope.daysrequired,
                 updated: $scope.getDate(),
                 destination: $scope.destination
             };
+            console.log($scope.daysrequired);
             //console.log("New JSON: ", $scope.reservationJSON);
             // PUT Request, updates the field and returns JSON
             $http.put("/api/checkout", $scope.reservationJSON).then(function (response) {

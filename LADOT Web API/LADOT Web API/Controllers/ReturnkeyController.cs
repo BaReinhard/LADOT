@@ -55,35 +55,43 @@ namespace LADOT_Web_API.Controllers
 
         // PUT: api/ReturnKey
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutVehicle(VehicleRequest vehicle)
+        public IHttpActionResult PutVehicle(Vehicle vehicle)
         {
             var query = db.Vehicles.FirstOrDefault(i => i.status == "checkedin" && i.carId == vehicle.carId && i.email == vehicle.email);
 
             if (query != null)
             {
-
+                // Create History Object to Store in Historys Database
                 History hist = new History
                 {
+                    carId = vehicle.carId,
+                    status = vehicle.status,
+                    lastFuel = vehicle.lastFuel,
+                    currentFuel = vehicle.currentFuel,
+                    comments = vehicle.comments,
+                    lastMileage = vehicle.lastMileage,
+                    currentMileage = vehicle.currentMileage,
                     email = vehicle.email,
-                    carId = db.Entry(query).Entity.carId,
-                    date = DateTime.Today.ToShortDateString(),
-                    fuel = db.Entry(query).Entity.lastFuel,
-                    mileage = db.Entry(query).Entity.lastMileage,
-                    duedate = db.Entry(query).Entity.duedate,
+                    updated = DateTime.Today.ToShortDateString(),
+                    duedate = vehicle.duedate,
                     name = vehicle.name,
-                    status = "keyreturned"
+                    destination = vehicle.destination
+
                 };
 
+                // Clear Vehicle Entry for Checkout
                 db.Entry(query).State = EntityState.Modified;
                 db.Entry(query).Entity.status = "available";
                 db.Entry(query).Entity.email = "";
                 db.Entry(query).Entity.duedate = "";
+                db.Entry(query).Entity.name = "";
+                db.Entry(query).Entity.comments = "";
                 db.Entry(query).Entity.lastFuel = vehicle.currentFuel;
                 db.Entry(query).Entity.lastMileage = vehicle.currentMileage;
 
                 db.Entry(query).Entity.updated = DateTime.Today.ToShortDateString();
 
-                // Create History Object to Store in Historys Database
+                
                 
 
                 // Add Object to History Database

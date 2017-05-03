@@ -36,3 +36,78 @@ C:\Users\501323050\documents\visual studio 2015\Projects\LADOT Web API\LADOT Web
 C:\Users\501323050\documents\visual studio 2015\Projects\LADOT Web API\LADOT Web API\obj\Debug\LADOT_Web_API.Migrations.AddDBCategory.resources
 C:\Users\501323050\documents\visual studio 2015\Projects\LADOT Web API\LADOT Web API\obj\Debug\LADOT_Web_API.Migrations.updateDBCategory.resources
 C:\Users\501323050\documents\visual studio 2015\Projects\LADOT Web API\LADOT Web API\obj\Debug\LADOT_Web_API.Migrations.destinationforhistory.resources
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\csc.exe
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\vbc.exe
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\VBCSCompiler.exe
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\LADOT Web API.dll.config
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\LADOT Web API.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\LADOT Web API.pdb
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\EntityFramework.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\EntityFramework.SqlServer.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\Newtonsoft.Json.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\System.Net.Http.Formatting.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\System.Web.Http.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\System.Web.Http.WebHost.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\EntityFramework.xml
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\EntityFramework.SqlServer.xml
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\Newtonsoft.Json.xml
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\System.Net.Http.Formatting.xml
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\System.Web.Http.xml
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\System.Web.Http.WebHost.xml
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\obj\Debug\LADOT_Web_API.Migrations.Initial.resources
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\obj\Debug\LADOT_Web_API.Migrations.Initial2.resources
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\obj\Debug\LADOT_Web_API.Migrations.AddDBCategory.resources
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\obj\Debug\LADOT_Web_API.Migrations.updateDBCategory.resources
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\obj\Debug\LADOT_Web_API.Migrations.destinationforhistory.resources
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\obj\Debug\LADOT Web API.csproj.GenerateResource.Cache
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\obj\Debug\LADOT Web API.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\obj\Debug\LADOT Web API.pdb
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\csc.exe.config
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\csc.rsp
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\csi.exe
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\csi.exe.config
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\csi.rsp
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.AppContext.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Console.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.IO.Compression.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.IO.Pipes.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Security.Claims.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Threading.Thread.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.ValueTuple.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Xml.XPath.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\vbc.exe.config
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\bin\roslyn\vbc.rsp
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\obj\Debug\LADOT Web API.csprojResolveAssemblyReference.cache
+C:\Users\brett\Downloads\LADOT Web API (2)\LADOT Web API\LADOT Web API\obj\Debug\LADOT_Web_API.Migrations.mergedbstructure.resources

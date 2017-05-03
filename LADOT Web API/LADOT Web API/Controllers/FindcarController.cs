@@ -52,42 +52,47 @@ namespace LADOT_Web_API.Controllers
         }
 
         // GET: api/FindCar/5
-        //[ResponseType(typeof(Vehicle))]
-        //public IHttpActionResult GetVehicle(string id)
-        //{
-        //    if (id == "available")
-        //    {
-        //        var query = from v in db.Vehicles
-        //                    where v.status == "available"
-        //                    select v;
-        //        return Ok(query);
-        //    }
-        //    else if (id == "checkedout")
-        //    {
-        //        var query = from v in db.Vehicles
-        //                    where v.status == "checkedout"
-        //                    select v;
-        //        return Ok(query);
-        //    }
-        //    else if (id == "checkedin")
-        //    {
-        //        var query = from v in db.Vehicles
-        //                    where v.status == "checkedin"
-        //                    select v;
-        //        return Ok(query);
-        //    }
-        //    else
-        //    {
-        //        Vehicle vehicle = db.Vehicles.Find(id);
-        //        if (vehicle == null)
-        //        {
-        //            return NotFound();
-        //        }
-            
-        //        return Ok(vehicle);
-        //    }
+        [ResponseType(typeof(Vehicle))]
+        public IHttpActionResult GetVehicle(string id)
+        {
+            if (id == "available")
+            {
+                var query = from v in db.Vehicles
+                            where v.status == "available"
+                            select v;
+                return Ok(query);
+            }
+            else if (id == "checkedout")
+            {
+                var query = from v in db.Vehicles
+                            where v.status == "checkedout"
+                            select v;
+                return Ok(query);
+            }
+            else if (id == "checkedin")
+            {
+                var query = from v in db.Vehicles
+                            where v.status == "checkedin"
+                            select v;
+                return Ok(query);
+            }else if(id == "history")
+            {
+                var query = from h in db.Historys
+                            select h;
+                return Ok(query);
+            }
+            else
+            {
+                Vehicle vehicle = db.Vehicles.Find(id);
+                if (vehicle == null)
+                {
+                    return NotFound();
+                }
 
-        //}
+                return Ok(vehicle);
+            }
+
+        }
 
         // PUT: api/FindCar
         [ResponseType(typeof(void))]

@@ -45,15 +45,25 @@ namespace LADOT_Web_API.Controllers
             //}
 
             var query = db.Vehicles.FirstOrDefault(i => i.status == "checkedout" && i.email == vehicle.email && i.carId == vehicle.carId);
-            
+
+            // Should think about how we want to handle some of these backend statements.
+            // For example, do we want to rely on the front end passing lastfuel, mileage, and name?
+            // The Alertnatives are commented under the respective lines
+
             db.Entry(query).State = EntityState.Modified;
+            db.Entry(query).Entity.name = db.Entry(query).Entity.name;
+//            db.Entry(query).Entity.name = vehicle.name;
             db.Entry(query).Entity.status = "checkedin";
             db.Entry(query).Entity.updated = DateTime.Today.ToShortDateString();
             db.Entry(query).Entity.comments = vehicle.comments;
-            db.Entry(query).Entity.lastFuel = db.Entry(vehicle).Entity.currentFuel;
-            db.Entry(query).Entity.lastMileage = db.Entry(vehicle).Entity.currentMileage;
+            db.Entry(query).Entity.lastFuel = vehicle.lastFuel;
+//            db.Entry(query).Entity.lastFuel = db.Entry(query).Entity.lastFuel;
+            db.Entry(query).Entity.lastMileage = vehicle.lastMileage;
+//            db.Entry(query).Entity.lastMileage = db.Entry(query).Entity.lastMileage;
             db.Entry(query).Entity.currentFuel = vehicle.currentFuel;
             db.Entry(query).Entity.currentMileage = vehicle.currentMileage;
+
+            
 
             try
             {
