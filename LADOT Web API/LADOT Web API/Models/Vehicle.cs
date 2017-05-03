@@ -19,6 +19,6 @@ namespace LADOT_Web_API.Models
         public int currentMileage { get; set; }
         public string email { get; set; }
         public string updated { get; set; }
-
+        public string duedate { get; set; }
     }
 }
