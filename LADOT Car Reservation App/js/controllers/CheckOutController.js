@@ -30,37 +30,39 @@ app.controller('CheckOutController', ['$scope', '$timeout', '$http', '$sce', '$l
         if ($scope.userForm.$valid) {
             // New JSON
             $scope.reservationJSON = {
-                checkedout: $scope.email,
+                name: $scope.name,
+                email: $scope.email,
                 duedate: $scope.getDueDate(),
-                updated: $scope.getDate()
+                updated: $scope.getDate(),
+                destination: $scope.destination
             };
-            //console.log("New JSON: ", $scope.reservationJSON);
-            // GET Request
-            $http.get("https://raw.githubusercontent.com/BaReinhard/LADOT/master/jsonObjects/vehicle_response.json").then(function (response) {
-                $scope.retrievedJSON = response.data
-                $scope.retrievedJSON.duedate = $scope.getDueDate();
-                $scope.retrievedJSON.updated = $scope.getDate();
-                $scope.retrievedJSON.checkedout = $scope.email;
-                console.log("Thank you, " + $scope.name + ". Car is assigned to " + $scope.email + ". Car Reservation Data: ", response.data);
+            // PUT Request
+            $http.put("/api/checkout", $scope.reservationJSON).then(function (response) {
+                // Ensure a Vehicle was returned
+                if (response.data != null) {
+                    $scope.retrievedJSON = response.data
+                    console.log("Thank you, " + $scope.name + ". Car is assigned to " + $scope.email + ". Car Reservation Data: ", response.data);
 
-                //Do on Success
-                $scope.resultMessage = '<div class="alert alert-success app-container-header"> <h3><strong>Success <span class="glyphicon glyphicon-ok"></span> </strong></h3> <h4>Thank you, ' + $scope.name + '. Car ' + response.data.id + ' is ready for you. The car is due back: ' + $scope.getDueDate() + '.</h4></div><hr />';
-                $scope.showForm = false;
+                    //Do on Success
+                    $('#checkOutModal').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    })
+                    $scope.resultTitle = '<h3 class="app-container-header"><strong>Success <span class="glyphicon glyphicon-ok"></span> </strong></h3>';                  
+                    $scope.resultMessage = '<div class="app-container-header"><h4>Thank you, ' + $scope.name + '. Car ' + response.data.carId + ' is ready for you. The car is due back: ' + response.data.duedate + '.</h4></div><hr />';
+                    $scope.showForm = false;
+                    $timeout(function () {
+                        $('#checkOutModal').modal('hide');
+                        $location.path("/")
+                    }, 3500);
 
-                //Reset JSON
-                $scope.name = "";
-                $scope.daysrequired = "";
-                $scope.email = "";
+                }
+                // Function to run on Failure of the PUT Request
+            }, function (error) {
+                console.log("PUT Request has failed");
+                console.log(error);
+                $scope.errorMessage = '<div class="app-container-header alert alert-danger"><h4><strong>Error!</strong></h4>No vehicles are available.</div>';
             });
-
         }
-            //On Failure
-        else {
-            $scope.resultMessage = '<div class="alert alert-danger app-container-header"> <h4><strong>Error!</strong></h4> Please make sure the form is filled out with vaild data.</div>';
-
-        }
-
-
     }
-
 }]);
