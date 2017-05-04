@@ -1,14 +1,263 @@
-<div class="app-container container">
+<div class="app-container admin-container container">
     <div class="row">
-        <div id="div1" class="col-sm-10 col-sm-offset-1">
-            <h1>Administrative Page</h1>
-            <a href="#!/" class="btn btn-default">Back Home</a>
-            <div style="width: 75%;margin: 0 auto;" class="panel panel-default">
-                <div class="panel-body" ng-repeat="v in vehicles.Vehicle">
-                    Car #{{v.id}} <a class="btn btn-default" ng-click="vehicles.Vehicle.splice($index,1)">Check-In</a>
+        <div id="div1" class="col-lg-12 ">
+            <a href="#!/" class="btn btn-outline-primary admin-back"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Back</a>
+
+            <h1 class="app-container-header"><i class="fa fa-bar-chart" aria-hidden="true"></i> Admin Panel</h1>
+            <div class="">
+
+                <!-- Panel Quick Report-->
+                <div class="">
+                    <div class="row" style="margin-top:25px;">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-12 text-center">
+                                            <div class="admin-panel-number"><strong>{{pendingCount}}</strong></div>
+                                            <div><h4>Pending</h4></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-12 text-center">
+                                            <div class="admin-panel-number">API</div>
+                                            <div><h4>Checked Out</h4></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-12 text-center">
+                                            <div class="admin-panel-number">API</div>
+                                            <div><h4>Checked In</h4></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-12 text-center">
+                                            <div class="admin-panel-number">API</div>
+                                            <div><h4>Maintanace</h4></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+
+                <!-- Panel Tabs -->
+                <div class="row">
+                    <div class="col-sm-8">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-target="#1" data-toggle="tab">Pending</a>
+                            </li>
+                            <li>
+                                <a data-target="#2" data-toggle="tab"><strong>Checked Out</strong></a>
+                            </li>
+                            <li>
+                                <a data-target="#3" data-toggle="tab">Checked In</a>
+                            </li>
+                            <li>
+                                <a data-target="#4" data-toggle="tab">Maintenance</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- Search Bar -->
+                        <div class="admin-search">
+                            <div class="input-group ">
+
+                                <input type="text" class="form-control" ng-model="searchCars" />
+                                <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-search "></span></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+             <!-- Pending Tab-->
+                <div class="tab-content clearfix">
+                    <div class="tab-pane active" id="1">
+                        <div class="alert alert-info " style="margin-top: 10px"> <p><strong>!</strong> Complete the check-out process when the keys have been returned.</p></div>
+                    
+          
+                        <!-- Table -->
+                        <div>
+                            <table id="table-admin-data" class="table table-admin">
+
+                                <tr>
+                                    <th>
+                                        Car ID
+                                    </th>
+                                    <th>
+                                        Fuel
+                                    </th>
+                                    <th>
+                                        Mileage
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+
+                                </tr>
+                                <tr ng-repeat="v in vehicles | filter: searchCars">
+                                    <td>
+                                        {{v.carId}}
+                                    </td>
+                                    <td ng-if="v.currentFuel == 0">
+                                        Empty
+                                    </td>
+                                    <td ng-if="v.currentFuel == 1">
+                                        1/4
+                                    </td>
+                                    <td ng-if="v.currentFuel == 2">
+                                        Half
+                                    </td>
+                                    <td ng-if="v.currentFuel == 3">
+                                        3/4
+                                    </td>
+                                    <td ng-if="v.currentFuel == 4">
+                                        Full
+                                    </td>
+                                    <td>
+                                        {{v.currentMileage}}
+                                    </td>
+
+                                    <td ng-if="v.status == 'checkedin'">
+                                        Pending
+                                    </td>
+                                    <td ng-if="v.status != 'checkedin'">
+                                        {{v.status}}
+                                    </td>            
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pendingModal" ng-click="carDetails(v, $index)">
+                                            Check-In
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </table>
+                    </div>
+                    </div>                    
+                    <div class="tab-pane" id="2">
+                        <h3 class="app-container-header">Cars Unavailable</h3>
+                    </div>
+                    <div class="tab-pane" id="3">
+                        <h3 class="app-container-header">Cars Available for Check Out</h3>
+                    </div>
+                    <div class="tab-pane" id="4">
+                        <h3 class="app-container-header">Cars Out for Maintenance</h3>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 
+<!-- Pending Modal -->
+<div class="modal fade" id="pendingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-vertical-align">
+            <div class="modal-align-center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-inbox"></span> Confim Return Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Table -->
+                        <div>
+                            <table id="table-admin-data" class="table table-admin">
+
+                                <tr>
+                                    <th>
+                                        Car ID
+                                    </th>
+                                    <th>
+                                        Fuel
+                                    </th>
+                                    <th>
+                                        Mileage
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+                                        Comments
+                                    </th>                
+
+                                </tr>
+                                <tr >
+                                    <td>
+                                        {{selectedCar.carId}}
+                                    </td>
+                                    <td ng-if="selectedCar.currentFuel == 0">
+                                        Empty
+                                    </td>
+                                    <td ng-if="selectedCar.currentFuel == 1">
+                                        1/4
+                                    </td>
+                                    <td ng-if="selectedCar.currentFuel == 2">
+                                        Half
+                                    </td>
+                                    <td ng-if="selectedCar.currentFuel == 3">
+                                        3/4
+                                    </td>
+                                    <td ng-if="selectedCar.currentFuel == 4">
+                                        Full
+                                    </td>
+                                    <td>
+                                        {{selectedCar.currentMileage}}
+                                    </td>
+
+                                    <td ng-if="selectedCar.status == 'checkedin'">
+                                        Pending
+                                    </td>
+                                    <td ng-if="selectedCar.status != 'checkedin'">
+                                        {{selectedCar.status}}
+                                    </td>
+                                    <td>
+                                        {{selectedCar.comments}}
+                                    </td>
+
+                                </tr>
+
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="checkIn(selectedCarIndex)">
+                            Complete Check-In
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
