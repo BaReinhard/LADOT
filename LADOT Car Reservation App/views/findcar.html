@@ -3,18 +3,18 @@
         <div id="div1" class="col-sm-10 col-sm-offset-1">
 
             <!-- Page Header -->
-            <a href="#!/" class="btn btn-outline-primary app-container-back"><span class="glyphicon glyphicon-menu-left "></span>Back</a>
-            <h1 class="app-container-header"> Check-In</h1>
+            <a href="#!/" class="btn btn-outline-primary app-container-back"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Back</a>
+            <h1 class="app-container-header header1"> Check-In</h1>
             <h4 class="app-container-header"> Step 1: Find Car</h4>
             <hr />
-            <div ng-bind-html="renderHtml(resultMessage)"></div>
+            <div ng-bind-html="renderHtml(errorMessage)"></div>
             <!-- Form -->
             <form name="userForm" ng-submit="findCar()" ng-show="showForm" novalidate>
                 <!-- Car ID -->
                 <div class="form-group" ng-class="{ 'has-error' : userForm.carID.$invalid && !userForm.carID.$pristine }">
                     <label for="carID" class="cols-sm-2 control-label">Car ID</label>
                     <div class="input-group">
-                        <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-tag "></span></span>
+                        <span class="input-group-addon check-input-icon"><i class="fa fa-tag" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="carID" id="carID" placeholder="Enter the checked out car ID" ng-model="carID" required>
 
                     </div>
@@ -25,7 +25,7 @@
                 <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
                     <label for="email" class="cols-sm-2 control-label">Email</label>
                     <div class="input-group">
-                        <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-envelope "></span></span>
+                        <span class="input-group-addon check-input-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email" ng-model="email" required>
 
                     </div>
@@ -34,18 +34,13 @@
 
                 <!-- Submit -->
 
-                <button type="submit" class="btn btn-primary btn-lg btn-block check-button" ng-disabled="userForm.$invalid"><span class="glyphicon glyphicon-search"></span> Find Car</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block check-button" ng-disabled="userForm.$invalid"><i class="fa fa-search" aria-hidden="true"></i>  Find Car</button>
 
-                <div class="cancel-button">
-                    <a href="#!/">Cancel</a>
-                </div>
             </form>
-
-
-
-
-
-
+            <!-- Footer Logo -->
+            <div class="app-footer-logo" ng-show="showForm">
+                <img class="app-footer-logo" src="../img/Seal_LA_Footer.png" alt="Los Angeles City Seal">
+            </div>
         </div>
     </div>
 </div>
