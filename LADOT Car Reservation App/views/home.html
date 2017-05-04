@@ -1,32 +1,35 @@
-    <div class="app-container container">
+    <div class="app-container container ">
         <div class="row">
-            <div id="div1" class="col-sm-10 col-sm-offset-1" >
+            <div id="div1" class="col-sm-10 col-sm-offset-1 ">
+            <!-- Buttons -->
                 <div id="home-header">
                     <div class="home-logo">
                         <img class="home-logo" src="img/ladot-student-app-logo-alpha.jpg" alt="LADOT Reservation App Logo">
                     </div>
                 </div>
-                <hr />
-
                 <a href="#!/checkout">
                     <div class="home-button">
-                        <h3>Check-Out</h3>
+                       Check-Out
                     </div>
                 </a>
                 <a href="#!/findcar">
                     <div class="home-button">
-                        <h3>Check-In</h3>
+                            Check-In
                     </div>
                 </a>
-
                 <a href="#!/admin">
-                    <div class="home-button">
-                        <h3> <span class="glyphicon glyphicon-cog home-button-span"></span> Admin</h3>
+                    <div class="home-button" ng-mouseenter="hover.left = true;" ng-mouseleave="hover.left = false;">
+                        <i class="fa fa-cog fa-1x fa-fw home-button-span" ng-class="{'fa-spin': hover.left}"></i>
+                        Admin Panel
                     </div>
                 </a>
                 <div id="home-footer">
+                    <div >
+                        <img class="app-footer-logo" src="../img/Seal_LA_Footer.png" alt="Los Angeles City Seal">
+                    </div>
                     <p class="app-container-bottom">Comments or feedback? <a>Contact Team</a></p>
                 </div>
             </div>
         </div>
     </div>
+
