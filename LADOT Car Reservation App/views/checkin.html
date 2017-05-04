@@ -1,54 +1,62 @@
-﻿<div class="app-container container">
+<div class="app-container container">
     <div class="row">
         <div id="div1" class="col-sm-10 col-sm-offset-1">
 
             <!-- Page Header -->
-            <a href="#!/" class="btn btn-outline-primary app-container-back"><span class="glyphicon glyphicon-menu-left "></span>Home</a>
-            <h1 class="app-container-header"> Check-In</h1>
+            <a ng-show="showForm"  href="#!/" class="btn btn-outline-primary app-container-back"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Cancel</a>
+            <h1 class="app-container-header header1"> Check-In</h1>
             <h4 class="app-container-header" ng-show="showForm"> Step 2: Complete Car Check-In Form</h4>
             <hr />
-            <div ng-bind-html="renderHtml(resultMessage)"></div>
-            <table id="table-data" ng-show="showForm">
+            <div ng-bind-html="renderHtml(errorMessage)"></div>
+            <!-- Table -->
+            <table id="table-data">
                 <tr>
-                    <td>Car ID</td>
-                    <td>API Placeholder</td>
+                    <td><strong>Car ID</strong></td>
+                    <td class="table-data-api">{{vehicles[0].carId}}</td>
                 </tr>
                 <tr>
-                    <td>Email</td>
-                    <td>API Placeholder</td>
+                    <td><strong>Email</strong></td>
+                    <td class="table-data-api">{{vehicles[0].email}}</td>
                 </tr>
                 <tr>
-                    <td>Starting Mileage</td>
-                    <td>API Placeholder</td>
+                    <td><strong>Starting Mileage</strong></td>
+                    <td class="table-data-api">{{vehicles[0].lastMileage}}</td>
                 </tr>
                 <tr>
-                    <td>Starting Fuel</td>
-                    <td>API Placeholder</td>
+                    <td><strong>Starting Fuel</strong></td>
+                    <td ng-if="vehicles[0].lastFuel == 0" class="table-data-api">Empty</td>
+                    <td ng-if="vehicles[0].lastFuel == 1" class="table-data-api">1/4</td>
+                    <td ng-if="vehicles[0].lastFuel == 2" class="table-data-api">Half</td>
+                    <td ng-if="vehicles[0].lastFuel == 3" class="table-data-api">3/4</td>
+                    <td ng-if="vehicles[0].lastFuel == 4" class="table-data-api">Full</td>
+                </tr>
+                <tr>
+                    <td><strong>Due Date</strong></td>
+                    <td class="table-data-api">{{vehicles[0].duedate}}</td>
                 </tr>
 
             </table>
             <hr />
             <!-- Form -->
-            <form name="userForm" ng-submit="checkIn()" ng-show="showForm" novalidate>
+            <form name="userForm" ng-submit="checkIn()" novalidate>
  
                 <!-- Mileage -->
                 <div class="form-group" ng-class="{ 'has-error' : userForm.miles.$invalid && !userForm.miles.$pristine }">
                     <label for="miles" class="cols-sm-2">Return Mileage</label>
                     <div class="cols-sm-10">
                         <div class="input-group ">
-                            <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-road"></span></span>
-                            <input type="text" class="form-control" name="miles" id="miles" placeholder="Enter Returned Mileage" ng-model="mileage" required>
+                            <span class="input-group-addon check-input-icon"><i class="fa fa-road" aria-hidden="true"></i></span>
+                            <input type="number" class="form-control" name="miles" id="miles" ng-model="mileage" min="{{vehicles[0].lastMileage}}" placeholder="Enter Returned Mileage" required>
                         </div>
-                        <p ng-show="userForm.miles.$invalid && !userForm.miles.$pristine" class="help-block">The mileage is required.</p>
+                        <p ng-show="userForm.miles.$invalid && !userForm.miles.$pristine" class="help-block">The mileage is required. Return mileage cannot be lower than <strong> {{vehicles[0].lastMileage}}</strong></p>
                     </div>
                 </div>
-
                 <!-- Fuel -->
                 <div class="form-group">
                     <label for="days" class="cols-sm-2">Return Fuel</label>
                     <div class="cols-sm-10">
                         <div class="input-group ">
-                            <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-dashboard "></span></span>
+                            <span class="input-group-addon check-input-icon"><i class="fa fa-dashboard" aria-hidden="true"></i></span>
                             <select class="form-control" ng-model="returnedFuel" required>
                                 <option ng-repeat="fue in fuel" value="{{fue.value}}">{{fue.label}}</option>
                             </select>
@@ -61,7 +69,7 @@
                     <label for="comment" class="cols-sm-2"> <span class="glyphicon glyphicon-pencil"></span>  Comments</label>
                     <div class="cols-sm-12">
                         <div class="input-group ">
-                            <textarea class="form-control" cols="100" rows="5" id="comment" ng-model="inputMessage" maxlength="200"></textarea>
+                            <textarea class="form-control" cols="100" rows="3" id="comment" ng-model="inputMessage" maxlength="200"></textarea>
                             <p class="text-right">{{ 200 - inputMessage.length + ' characters left' }}</p>
                         </div>
                     </div>
@@ -69,19 +77,32 @@
 
                 <!-- Submit -->
 
-                <button type="submit" class="btn btn-success btn-lg btn-block checkIn-button" ng-disabled="userForm.$invalid"><span class="glyphicon glyphicon-check"></span> Check In Car</button>
-
-                <div class="cancel-button">
-                    <a href="#!/">Cancel</a>
-                </div>
+                <button type="submit" class="btn btn-success btn-lg btn-block checkIn-button" ng-disabled="userForm.$invalid"><i class="fa fa-check-circle" aria-hidden="true"></i>  Check In Car</button>
             </form>
-
-
-
-
-
-
+            <!-- Footer Logo -->
+            <div class="app-footer-logo">
+                <img class="app-footer-logo" src="../img/Seal_LA_Footer.png" alt="Los Angeles City Seal">
+            </div>
         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="checkInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+        <div class="modal-vertical-align">
+            <div class="modal-align-center">
+                <div class="modal-content alert alert-success">
+                    <div class="modal-header">
+                        <div class="modal-title" id="myModalLabel" ng-bind-html="renderHtml(resultTitle)"></div>
+                    </div>
+                    <div class="modal-body">
+                        <!-- CheckIn Result -->
+                        <div ng-bind-html="renderHtml(resultMessage)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
