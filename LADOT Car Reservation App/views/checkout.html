@@ -2,19 +2,19 @@
     <div class="row">
         <div id="div1" class="col-sm-10 col-sm-offset-1">
             <!-- Page Header -->
-            <a href="#!/" class="btn btn-outline-primary app-container-back"><span class="glyphicon glyphicon-menu-left "></span>Back</a>
-            <h1 class="app-container-header">Check-Out</h1>
+            <a href="#!/" class="btn btn-outline-primary app-container-back"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Back</a>
+            <h1 class="app-container-header header1">Check-Out</h1>
             <h4 class="app-container-header"> Complete Car Check-Out Form</h4>
             <hr />
-            <div ng-bind-html="renderHtml(resultMessage)"></div>
+            <div ng-bind-html="renderHtml(errorMessage)"></div>
             <!-- Form -->
-            <form name="userForm" ng-submit="checkOut()" ng-show="showForm"  novalidate>
+            <form name="userForm" ng-submit="checkOut()" novalidate>
 
                 <!-- Name -->
                 <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
                     <label for="name" class="cols-sm-2 control-label">Name</label>
                     <div class="input-group">
-                        <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-user "></span></span>
+                        <span class="input-group-addon check-input-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" ng-model="name" required>
 
                     </div>
@@ -25,7 +25,7 @@
                 <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
                     <label for="email" class="cols-sm-2 control-label">Email</label>
                     <div class="input-group">
-                        <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-envelope "></span></span>
+                        <span class="input-group-addon check-input-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email" ng-model="email" required>
 
                     </div>
@@ -36,7 +36,7 @@
                 <div class="form-group" ng-class="{ 'has-error' : userForm.destination.$invalid && !userForm.destination.$pristine }">
                     <label for="destination" class="cols-sm-2 control-label">Destination</label>
                     <div class="input-group">
-                        <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-map-marker"></span></span>
+                        <span class="input-group-addon check-input-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="destination" id="destination" placeholder="Enter your trip destination" ng-model="destination" required>
 
                     </div>
@@ -48,21 +48,41 @@
                     <label for="days" class="cols-sm-2">Number of Days Needed</label>
 
                     <div class="input-group ">
-                        <span class="input-group-addon check-input-icon"><span class="glyphicon glyphicon-calendar "></span></span>
+                        <span class="input-group-addon check-input-icon"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></span>
                         <input type="number" class="form-control" name="days" id="days" ng-model="daysrequired" value="1" min="1" max="30" required >
                     </div>
                     <p ng-show="userForm.days.$invalid && !userForm.days.$pristine" class="help-block">Enter the number of days needed. Maximum: 30 days.</p>
                 </div>
 
 
-                <!-- Submit -->
-                <button type="submit" class="btn btn-primary btn-lg btn-block checkIn-button" ng-disabled="userForm.$invalid"><span class="glyphicon glyphicon-unchecked"></span> Check Out Car</button>
-                <div class="cancel-button">
-                    <a href="#!/">Cancel</a>
-                </div>
+                <!-- Submit -->               
+                <button type="submit" class="btn btn-primary btn-lg btn-block checkIn-button" ng-disabled="userForm.$invalid"><i class="fa fa-circle-o" aria-hidden="true"></i> Check Out Car</button>
             </form >      
-
+            <!-- Footer Logo -->
+            <div class="app-footer-logo">
+                <img class="app-footer-logo" src="../img/Seal_LA_Footer.png" alt="Los Angeles City Seal">
+            </div>
         </div>
     </div>
 </div>
 
+<!-- CheckOut Success Modal -->
+<div class="modal fade" id="checkOutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+        <div class="modal-vertical-align">
+            <div class="modal-align-center">
+                <div class="modal-content alert alert-success">
+                    <div class="modal-header">
+                        <div class="modal-title" id="myModalLabel" ng-bind-html="renderHtml(resultTitle)"></div>
+                    </div>
+                    <div class="modal-body">
+                        <!-- CheckOut Result -->
+                        <div ng-bind-html="renderHtml(resultMessage)"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
